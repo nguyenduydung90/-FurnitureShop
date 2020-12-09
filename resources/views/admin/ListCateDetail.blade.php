@@ -23,7 +23,7 @@
                             @foreach($cateDetails as $key=>$data)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td>{{$data->name}}</td>
+                                    <td>{{$data->cateDetail_name}}</td>
 {{--                                    <td>{{$data->find($data->category_id)->category}}</td>--}}
                                     <td>
                                         <a href="{{route('cateDetail.edit',$data->id)}}" class="btn btn-primary">Sửa</a>

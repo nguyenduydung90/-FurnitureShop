@@ -22,6 +22,26 @@
     <link rel="stylesheet" href="{{asset('customerCss/image.css')}}" tppabs="http://demo01.123corp.com.vn/furniture/css/image.css">
     <link rel="stylesheet" href="{{asset('customerCss/slider.css')}}" tppabs="http://demo01.123corp.com.vn/furniture/css/slider.css">
     <link rel="stylesheet" href="{{asset('customerCss/style1.css')}}" tppabs="http://demo01.123corp.com.vn/furniture/css/style1.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="{{ asset('js/my.js') }}"></script>
+
 </head>
 <body class="index ">
 <div class="pusher">
@@ -61,6 +81,7 @@
 <script type="text/javascript" src="{{asset('customerCss/slider.js')}}" tppabs="http://demo01.123corp.com.vn/furniture/js/slider.js"></script>
 <script type="text/javascript" src="{{asset('customerCss/product.js')}}" tppabs="http://demo01.123corp.com.vn/furniture/js/product.js"></script>
 <script type="text/javascript" src="{{asset('customerCss/post.js')}}" tppabs="http://demo01.123corp.com.vn/furniture/js/post.js"></script>
+
 <script>
     addthis.layers({
         theme : 'transparent',

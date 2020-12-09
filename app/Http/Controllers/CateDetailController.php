@@ -13,7 +13,6 @@ class CateDetailController extends Controller
     {
 
         $cateDetails=CateDetail::all();
-
         return view('admin.ListCateDetail',compact('cateDetails'));
     }
 

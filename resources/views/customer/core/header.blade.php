@@ -3,8 +3,8 @@
         <div class="ui grid  wm-mobile container" >
             <div class="large computer only twelve wide large twelve wide computer column" >
                 <nav class="wm-module wm-menu ui default  menu computer tablet mobile only wm-men-794">
-                    <a class="item" href="tel:0945.518.538"><i class="icon phone"></i>Hotline: 0945.518.538 | 0906.308.380</a>
-                    <a class="item" href="javascript:if(confirm(%27http://demo01.123corp.com.vn/  \n\nThis file was not retrieved by Teleport Ultra, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://demo01.123corp.com.vn/%27" tppabs="http://demo01.123corp.com.vn/"><i class="icon mail"></i>Email: info@123corp.vn</a>
+{{--                    <a class="item" href="tel:0945.518.538"><i class="icon phone"></i>Hotline: 0945.518.538 | 0906.308.380</a>--}}
+{{--                    <a class="item" href="javascript:if(confirm(%27http://demo01.123corp.com.vn/  \n\nThis file was not retrieved by Teleport Ultra, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://demo01.123corp.com.vn/%27" tppabs="http://demo01.123corp.com.vn/"><i class="icon mail"></i>Email: info@123corp.vn</a>--}}
                     <div class="menu right">
                         <a class="item" href="{{route('customer.showCart')}}">Giỏ hàng</a>
                         <a class="item" href="thanh-toan.html" tppabs="http://demo01.123corp.com.vn/furniture/thanh-toan.html">Thanh toán</a>
@@ -17,7 +17,6 @@
                         <form action="{{route('search.product')}}" method="post">
                         <div class="ui action fluid left icon input">
                             <i class="search icon"></i>
-
                                 @csrf
                             <input class="txtKeyword" name="keyword" type="text" placeholder="Từ khóa"  value="">
                             <button type="submit" class="ui button" onclick="">Tìm</button>
@@ -25,11 +24,25 @@
                         </div>
                         </form>
                     </div>
+
                 </div>
             </div>
+            <div class="four wide large four wide computer sixteen wide tablet sixteen wide mobile column middle aligned" >
+                <div class="middle aligned content">
+                @if(session()->has('login'))
+                    <p style="color: white">Xin chào: {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-link ">Logout</button>
+                    </form>
+                @endif
+            </div>
+            </div>
+
         </div>
     </div>
 </div>
+
 <div class="ui padded grid" >
     <div class="header  wm-mobile column" >
         <div id='first-row' class="ui grid  wm-mobile container" >
@@ -124,7 +137,7 @@
                 <div class="wm-module wm-cart">
                     <button class="fluid ui secondary icon button dropdown">
                         <div style="text-align: center">
-                            <a href="{{route('customer.showCart')}}" tppabs="http://demo01.123corp.com.vn/furniture/gio-hang.html" style="color: #fff"><i class="icon cart"></i>&nbsp;0&nbsp;sản phẩm 0.00</a>
+                            <a href="{{route('cart.index')}}" tppabs="http://demo01.123corp.com.vn/furniture/gio-hang.html" style="color: #fff"><i class="icon cart"></i>&nbsp;&nbsp;sản phẩm </a>
                         </div>
                     </button>
                 </div>

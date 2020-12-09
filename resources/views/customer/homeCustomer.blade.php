@@ -142,6 +142,7 @@
                 <div class="wm-module wm-product products-h dele-header ui active tab" data-tab="product-595">
                     <div class="ui dividing header">Sản phẩm </div>
                     <div class="ui stackable doubling link cards four pro-code-product-595"> <!-- items / cards -->
+
                         @foreach($products as $product)
                         <div class="card" style="box-shadow: 5px 10px 18px lightgrey !important;">
                             <div class="ui image wm-dimmer blurring dimmable" onclick="location.href='{{route('customer.showProductDetail')}}'/*tpa=http://demo01.123corp.com.vn/furniture/san-pham-detail.html*/">
@@ -154,15 +155,18 @@
                                     <p class="ui red header"><small>{{number_format($product->buyPrice,0,',','.')}} VNĐ</small></p>
                                 </div>
                             </div>
+
                             <div class="button-group ui buttons bottom two attached" data-p="47077">
                                 <div class="ui button" onclick="addtoCart(event,undefined,47077);">
-                                    <i class="cart icon"></i> Thêm vào giỏ
+                                    <i class="cart icon"></i> <a href="{{route('cart.addToCart',$product->id)}}">Thêm vào giỏ</a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-
+                       <p style="width: auto"></p>
                     </div>
+                <div class="ui stackable doubling link cards four pro-code-product-595 mt-4 mb-4">{{$products->links()}}</div>
+
                     <!-- end cards -->
                 </div>
             </div>

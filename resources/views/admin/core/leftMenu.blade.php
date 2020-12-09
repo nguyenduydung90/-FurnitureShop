@@ -67,6 +67,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Danh mục sản phẩm chi tiết
                 </a>
+                <a class="nav-link" href="{{route('manage.showManageOrder')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Quản lý đơn hàng
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

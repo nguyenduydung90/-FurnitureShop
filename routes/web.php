@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CateDetailController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('/')->group(function (){
 
-    Route::get('/',[CustomerController::class,'index'])->name('customer.index');
+    Route::get('/',[UserController::class,'showPageGuest'])->name('customer.index');
     Route::get('/home',[CategoriesController::class,'sendDataToCustomer'])->name('customer.sendDataToCustomer');
 
 });
@@ -29,12 +34,12 @@ Route::prefix('/')->group(function (){
 Route::prefix('customer')->group(function (){
     Route::get('/cart',[CustomerController::class,'showCart'])->name('customer.showCart');
     Route::get('/productDetail',[CustomerController::class,'showProductDetail'])->name('customer.showProductDetail');
-    Route::get('/product',[CustomerController::class,'showViewProduct'])->name('customer.showViewProduct');
+    Route::get('/product',[CustomerController::class,'index'])->name('customer.showViewProduct');
 
 });
 
 Route::prefix('admin')->group(function (){
-    Route::get('/',[AdminController::class,'showHomeAdmin'])->name('admin.showHomeAdmin');
+    Route::get('/',[UserController::class,'showPageAdmin'])->name('admin.showHomeAdmin');
     Route::get('/productList',[ProductsController::class,'index'])->name('admin.index');
     Route::get('/addProduct',[ProductsController::class,'create'])->name('product.create');
     Route::post('/addProduct',[ProductsController::class,'store'])->name('product.store');
@@ -42,9 +47,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/{id}/edit',[ProductsController::class,'edit'])->name('product.edit');
     Route::post('/{id}/update',[ProductsController::class,'update'])->name('product.update');
 
-});
-Route::prefix('categories')->group(function (){
-    Route::get('/',[CategoriesController::class,'index'])->name('categories.index');
+    /* categories*/
+    Route::get('/categories',[CategoriesController::class,'index'])->name('categories.index');
     Route::get('/addCategories',[CategoriesController::class,'create'])->name('categories.create');
     Route::post('/addCategories',[CategoriesController::class,'store'])->name('categories.store');
     Route::get('/{id}/editCategories',[CategoriesController::class,'edit'])->name('categories.edit');
@@ -52,15 +56,19 @@ Route::prefix('categories')->group(function (){
     Route::get('/{id}/deleteCategories',[CategoriesController::class,'destroy'])->name('categories.delete');
     Route::get('/addProduct',[CategoriesController::class,'showToAddProduct'])->name('categories.showToAddProduct');
     Route::get('/createCateDetail',[CategoriesController::class,'showCateDetail'])->name('cateDetail.create');
-});
 
-Route::prefix('cateDetail')->group(function (){
-    Route::get('/',[CateDetailController::class,'index'])->name('cateDetail.index');
+    /* cateDetails*/
+    Route::get('/cateDetail',[CateDetailController::class,'index'])->name('cateDetail.index');
     Route::post('/addCateDetail',[CateDetailController::class,'store'])->name('cateDetail.store');
     Route::get('/{id}/deleteCateDetail',[CateDetailController::class,'destroy'])->name('cateDetail.destroy');
     Route::get('/{id}/editCateDetail',[CateDetailController::class,'edit'])->name('cateDetail.edit');
     Route::post('/{id}/editCateDetail',[CateDetailController::class,'update'])->name('cateDetail.update');
+
+    //manageOrder
+    Route::get('/manageOrder',[OrderController::class,'showManageOrder'])->name('manage.showManageOrder');
+
 });
+
 
 Route::prefix('search')->group(function (){
     Route::post('/product',[SearchController::class,'searchProduct'])->name('search.product');
@@ -86,3 +94,21 @@ Route::prefix('search')->group(function (){
     Route::get('/sideCabinet',[SearchController::class,'sideCabinet'])->name('search.sideCabinet');
     Route::get('/roomCabinet',[SearchController::class,'roomCabinet'])->name('search.roomCabinet');
 });
+
+Route::prefix('login')->group(function (){
+    Route::get('/',[LoginController::class,'showViewLog'])->name('login');
+    Route::get('/registration',[LoginController::class,'showViewRegistration'])->name('registration');
+    Route::post('/register',[RegisterController::class,'register'])->name('register');
+    Route::post('/logined',[LoginController::class,'checkLogin'])->name('login.checkLogin');
+    Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+    Route::post('/logoutadmin',[LoginController::class,'logoutAdmin'])->name('logout.admin');
+});
+ Route::prefix('cart')->group(function (){
+     Route::get('/',[CartController::class,'index'])->name('cart.index');
+     Route::middleware('auth')->get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('cart.addToCart');
+     Route::get('/remove-to-cart/{id}',[CartController::class,'removeProductIntoCart'])->name('cart.removeProductIntoCart');
+     Route::post('/update-to-cart/{id}',[CartController::class,'updateProductIntoCart'])->name('cart.updateProductIntoCart');
+     Route::get('/checkout',[OrderController::class,'index'])->name('checkout');
+     Route::post('/checkout',[OrderController::class,'store'])->name('checkout.checkout');
+ });
+
