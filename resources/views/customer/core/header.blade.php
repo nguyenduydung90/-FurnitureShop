@@ -1,5 +1,5 @@
 <div class="ui padded grid" >
-    <div class="top-header  wm-mobile column" >
+    <div class="top-header  wm-mobile column col-8" >
         <div class="ui grid  wm-mobile container" >
             <div class="large computer only twelve wide large twelve wide computer column" >
                 <nav class="wm-module wm-menu ui default  menu computer tablet mobile only wm-men-794">
@@ -8,12 +8,21 @@
                     <div class="menu right">
                         <a class="item" href="{{route('customer.showCart')}}">Giỏ hàng</a>
                         <a class="item" href="thanh-toan.html" tppabs="http://demo01.123corp.com.vn/furniture/thanh-toan.html">Thanh toán</a>
+                        <a class="item" href="{{route('login')}}" >Đăng nhập</a>
+                         @if(session()->has('login'))
+                            <p style="color: white" class="ui action fluid left">Xin chào: {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
+                            <form action="{{route('logout')}}" method="post" class="form">
+                                @csrf
+                                <button type="submit" class="btn btn-link ">Đăng xuất</button>
+                            </form>
+                        @endif
+
                     </div>
                 </nav>
             </div>
             <div class="four wide large four wide computer sixteen wide tablet sixteen wide mobile column middle aligned" >
                 <div class="wm-module wm-search">
-                    <div class="middle aligned content">
+                    <div class="middle aligned content col-10">
                         <form action="{{route('search.product')}}" method="post">
                         <div class="ui action fluid left icon input">
                             <i class="search icon"></i>
@@ -26,21 +35,13 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="four wide large four wide computer sixteen wide tablet sixteen wide mobile column middle aligned" >
-                <div class="middle aligned content">
-                @if(session()->has('login'))
-                    <p style="color: white">Xin chào: {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
-                    <form action="{{route('logout')}}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-link ">Logout</button>
-                    </form>
-                @endif
-            </div>
+
+
             </div>
 
         </div>
     </div>
+
 </div>
 
 <div class="ui padded grid" >
