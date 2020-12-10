@@ -137,7 +137,7 @@
                 <div class="wm-module wm-cart">
                     <button class="fluid ui secondary icon button dropdown">
                         <div style="text-align: center">
-                            <a href="{{route('cart.index')}}" tppabs="http://demo01.123corp.com.vn/furniture/gio-hang.html" style="color: #fff"><i class="icon cart"></i> {{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalQty:null}}&nbsp;sản phẩm </a>
+                            <a href="{{route('cart.index')}}" tppabs="http://demo01.123corp.com.vn/furniture/gio-hang.html" style="color: #fff"><i class="icon cart" ></i> {{\Illuminate\Support\Facades\Session::has('cart')?\Illuminate\Support\Facades\Session::get('cart')->totalQty:null}}&nbsp;sản phẩm </a>
                         </div>
                     </button>
                 </div>
