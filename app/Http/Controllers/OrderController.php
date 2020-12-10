@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -25,12 +26,13 @@ class OrderController extends Controller
 
     public function showManageOrder()
     {
-        $order=DB::table('orderDetail')->join('orders','id','=','order_id')
-        ->join('products','id','=','product_id')
-        ->select('shippedDate','status','customer_id','productName','quanttityOrder','price')
+        $order=DB::table('customers')->join('orders','orders.customer_id','=','customers.id')
+            ->join('orderDetails','orderDetails.order_id','=','orders.id')
+            ->join('products','products.id','=','orderDetails.product_id')
+        ->select('customers.name','customers.address','customers.phone','products.productName','orderDetails.quanttityOrder','orderDetails.price','orders.shippedDate','orders.status','orders.id')
         ->get();
 
-        return view('',compact('order'));
+        return view('admin.manageOrder',compact('order'));
     }
 
     /**
@@ -102,7 +104,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-            $order=Order::findOrFail($id);
+            $orders=Order::findOrFail($id);
+
+            return view('admin.editManage',compact('orders'));
+
     }
 
     /**
@@ -114,7 +119,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order=Order::findOrFail($id);
+        $order->fill($request->all());
+        $order->status=$request->status;
+        $order->shippedDate=$request->shipped;
+        $order->save();
+        return redirect()->route('manage.showManageOrder');
     }
 
     /**

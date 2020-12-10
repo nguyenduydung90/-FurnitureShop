@@ -145,12 +145,12 @@
 
                         @foreach($products as $product)
                         <div class="card" style="box-shadow: 5px 10px 18px lightgrey !important;">
-                            <div class="ui image wm-dimmer blurring dimmable" onclick="location.href='{{route('customer.showProductDetail')}}'/*tpa=http://demo01.123corp.com.vn/furniture/san-pham-detail.html*/">
+                            <div class="ui image wm-dimmer blurring dimmable" onclick="location.href='{{route('customer.showProductDetail',$product->id)}}'/*tpa=http://demo01.123corp.com.vn/furniture/san-pham-detail.html*/">
                                 <div class="ui dimmer"></div>
-                                <img src="{{asset($product->image)}}" tppabs="http://demo01.123corp.com.vn/furniture/images/recent-products-2.jpg" class="visible content" alt="album-woo-3" />
+                                <img src="{{asset($product->image)}}"  class="visible content" alt="album-woo-3" />
                             </div>
                             <div class="content">
-                                <a href="{{route('customer.showProductDetail')}} " class="header"><h2>{{$product->productName}}</h2></a>
+                                <a href="{{route('customer.showProductDetail',$product->id)}}" class="header"><h3>{{$product->productName}}</h3></a>
                                 <div class="left floated meta">
                                     <p class="ui red header"><small>{{number_format($product->buyPrice,0,',','.')}} VNĐ</small></p>
                                 </div>

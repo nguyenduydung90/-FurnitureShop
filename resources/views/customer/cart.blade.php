@@ -20,10 +20,10 @@
                 <div class="column">
                     <div class="wm-module wm-breadcrumb">
                         <div class="ui segment">
-                            <div class="ui large breadcrumb" >
-                                <a href="index.html" tppabs="http://demo01.123corp.com.vn/furniture/index.html" class="section" style="color: black"><i class="icon home"></i></a>
+                            <div class="ui large breadcrumb" style="background-color: #0E566C" >
+                                <a href="index.html" tppabs="http://demo01.123corp.com.vn/furniture/index.html" class="section" ><i class="icon home"></i></a>
                                 <i class="right angle icon divider"></i>
-                                <div class="active section" style="color: black">Giỏ hàng</div>
+                                <div class="active section" >Giỏ hàng</div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                     @foreach($cart->items as $product)
                                 <tr><td data-th="Ảnh">
                                         <a href="san-pham-detail.html" ><img class="ui tiny centered image" src="{{asset($product['item']->image)}}" tppabs="http://demo01.123corp.com.vn/furniture/images/recent-products-2.jpg" alt="image"></a></td>
-                                    <td data-th="Sản phẩm"><strong class=""><a class="p-name" href="javascript:if(confirm(%27http://demo01.123corp.com.vn/p/album-woo-3.html  \n\nThis file was not retrieved by Teleport Ultra, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://demo01.123corp.com.vn/p/album-woo-3.html%27" tppabs="http://demo01.123corp.com.vn/p/album-woo-3.html">{{$product['item']->productName}}</a></strong></td>
+                                    <td data-th="Sản phẩm"><strong class=""><a class="p-name" href="javascript:if(confirm(%27http://demo01.123corp.com.vn/p/album-woo-3.html  \n\nThis file was not retrieved by Teleport Ultra, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://demo01.123corp.com.vn/p/album-woo-3.html%27" >{{$product['item']->productName}}</a></strong></td>
                                     <td data-th="Số lượng">
 {{--                                        <form action="{{route('cart.updateProductIntoCart',$product['item']->id)}}" method="post">--}}
 {{--                                            @csrf--}}

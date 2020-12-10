@@ -33,7 +33,7 @@ Route::prefix('/')->group(function (){
 
 Route::prefix('customer')->group(function (){
     Route::get('/cart',[CustomerController::class,'showCart'])->name('customer.showCart');
-    Route::get('/productDetail',[CustomerController::class,'showProductDetail'])->name('customer.showProductDetail');
+    Route::get('/productDetail/{id}',[CustomerController::class,'showProductDetail'])->name('customer.showProductDetail');
     Route::get('/product',[CustomerController::class,'index'])->name('customer.showViewProduct');
 
 });
@@ -66,6 +66,8 @@ Route::prefix('admin')->group(function (){
 
     //manageOrder
     Route::get('/manageOrder',[OrderController::class,'showManageOrder'])->name('manage.showManageOrder');
+    Route::get('/editManage/{id}',[OrderController::class,'edit'])->name('manage.edit');
+    Route::post('/editManage/{id}',[OrderController::class,'update'])->name('manage.update');
 
 });
 

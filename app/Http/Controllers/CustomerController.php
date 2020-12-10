@@ -19,9 +19,10 @@ class CustomerController extends Controller
         return view('customer.cart');
     }
 
-    public function showProductDetail()
+    public function showProductDetail($id)
     {
-        return view('customer.chi-tiet-san-pham');
+        $products=Product::findOrFail($id);
+        return view('customer.chi-tiet-san-pham',compact('products'));
     }
 
     public function showViewProduct()
