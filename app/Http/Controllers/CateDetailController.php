@@ -50,6 +50,7 @@ class CateDetailController extends Controller
     {
         $cateDetails=CateDetail::findOrFail($id);
         $cateDetails->fill($request->all());
+
         $cateDetails->save();
         return redirect()->route('cateDetail.index');
     }

@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Loại sản phẩm chi tiết</label>
-                    <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" id="email" value="{{$cateDetail->name}}">
+                    <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" id="email" value="{{$cateDetail->cateDetail_name}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

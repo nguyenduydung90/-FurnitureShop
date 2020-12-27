@@ -1,5 +1,5 @@
 <div class="ui padded grid" >
-    <div class="top-header  wm-mobile column col-8" >
+    <div class="top-header  wm-mobile column" >
         <div class="ui grid  wm-mobile container" >
             <div class="large computer only twelve wide large twelve wide computer column" >
                 <nav class="wm-module wm-menu ui default  menu computer tablet mobile only wm-men-794">

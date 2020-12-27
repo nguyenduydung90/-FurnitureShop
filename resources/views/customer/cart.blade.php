@@ -68,9 +68,9 @@
 {{--                                        </form>--}}
                                     </td>
                                     <td data-th="Giá" class="right aligned" style="color: red">{{number_format($product['item']->buyPrice)}} <sup>vnđ</sup></td>
-                                    <td  data-th="Thành tiền" class="right aligned"  id="product-subtotal-{{$product['item']->id}}"><strong>{{number_format($product['price'])}} </strong></td>
+                                    <td  data-th="Thành tiền" class="right aligned"  id="product-subtotal-{{$product['item']->id}}"><strong>{{number_format($product['price'])}} <sup>vnđ</sup></strong></td>
                                     <td data-th=""class="center aligned">
-                                        <a title="Xoá" class="ui icon red button btn-trash-cart" rel-p="19367"
+                                        <a title="Xoá" class="ui icon red button btn-trash-cart" rel-p="19367" onclick="return confirm('Bạn có chắc là muốn xóa không?')"
                                         href="{{route('cart.removeProductIntoCart',$product['item']->id)}}">
                                             <i class="icon trash"></i>
                                         </a>
@@ -82,7 +82,7 @@
                                 <tfoot>
                                 <tr>
                                     <th colspan="4" class="right aligned"><strong>Tổng cộng :</strong></th>
-                                    <th class="right aligned error"><strong>{{number_format($cart->totalPrice)}}</strong> <sup>vnđ</sup></th>
+                                    <th class="right aligned error total-price-cart"><strong>{{number_format($cart->totalPrice)}}</strong> <sup>vnđ</sup></th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </tfoot>
@@ -103,4 +103,36 @@
             </div>
         </div>
     </div>
+<script>
+    $(document).ready(function () {
+        $('.update-product-cart').change(function () {
+            var qtyNew = $(this).val();
+            var idProduct = $(this).attr('data-id');
+            var origin = location.origin;
+            console.log(origin +'/cart/update-to-cart/' + idProduct)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url : origin +'/cart/update-to-cart/' + idProduct,
+                method: 'POST',
+                data: {
+                    qty: qtyNew,
+                },
+                dataType: 'json',
+                success: function (result) {
+                     let data = result.productUpdate;
+
+                     $('#product-subtotal-' + idProduct).html('<strong>'+ data.price +' <sup>vnđ</sup>'+'</strong>' )
+                     $('.total-price-cart').html('<strong>' + result.totalPriceCart +' <sup>vnđ</sup>'+'</strong>')
+                }
+            })
+
+        })
+    })
+
+</script>
+
 @endsection

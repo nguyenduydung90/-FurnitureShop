@@ -11,7 +11,7 @@ class SearchController extends Controller
     {
         $products = DB::table('products')->join('categories', 'categories_id', '=', 'categories.id')
             ->join('cateDetails', 'cateDetail_id', '=', 'cateDetails.id')
-            ->select('name', 'productName', 'cateDetail_name', 'image', 'buyPrice')
+            ->select('categories.name', 'products.id','products.productName', 'cateDetails.cateDetail_name', 'products.image', 'products.buyPrice')
             ->where('productName', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('name', 'LIKE', '%' . $request->keyword . '%')
             ->orWhere('cateDetail_name', 'LIKE', '%' . $request->keyword . '%')

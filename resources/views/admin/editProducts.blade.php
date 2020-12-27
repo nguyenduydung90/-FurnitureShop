@@ -24,7 +24,7 @@
                         <select class="form-control"  name="cateDetail_id">
                             <option>------Chọn danh mục-----------</option>
                             @foreach($cateDetails as $cateDetail)
-                                <option value="{{$cateDetail->id}}">{{$cateDetail->name}}</option>
+                                <option value="{{$cateDetail->id}}">{{$cateDetail->cateDetail_name}}</option>
                             @endforeach
                         </select>
                     </div>

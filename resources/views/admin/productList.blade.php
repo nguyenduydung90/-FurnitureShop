@@ -32,7 +32,7 @@
                                 <td>{{++$key}}</td>
                                 <td>{{$product->productName}}</td>
                                 <td>{{$product->categories->name}}</td>
-                                <td>{{$product->cateDetail->name}}</td>
+                                <td>{{$product->cateDetail->cateDetail_name}}</td>
                                 <td>{{$product->height}}</td>
                                 <td>{{$product->width}}</td>
                                 <td>{{$product->length}}</td>

@@ -24,7 +24,7 @@ class Product extends Model
     ];
 
 
-    public function cateDetail()
+        public function cateDetail()
     {
         return $this->belongsTo(CateDetail::class,'cateDetail_id');
     }

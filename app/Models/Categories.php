@@ -16,7 +16,7 @@ class Categories extends Model
 
     public function cateDetail()
     {
-        return $this->hasMany(CateDetail::class,);
+        return $this->hasMany(CateDetail::class);
 }
 
     public function product()

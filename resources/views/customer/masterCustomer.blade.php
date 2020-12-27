@@ -7,6 +7,7 @@
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
     <meta property="fb:app_id" content="1754319418117348" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>Trang chủ</title>
     <link rel="stylesheet" href="{{asset('customerCss/semantic.min.css')}}" tppabs="http://furniture.weba.vn/public/plugins/Semantic-UI/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('customerCss/style.css')}}" tppabs="http://demo01.123corp.com.vn/furniture/css/style.css">
@@ -40,7 +41,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="{{ asset('js/my.js') }}"></script>
+    {{--  <script src="{{ asset('js/my.js') }}"></script>  --}}
 
 </head>
 <body class="index ">
