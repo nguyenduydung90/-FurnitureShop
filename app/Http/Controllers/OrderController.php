@@ -81,7 +81,7 @@ class OrderController extends Controller
         $orderDetail->price=$data['price'];
         $orderDetail->save();
         }
-        Session::flush('cart');
+        $request->session()->forget('cart');
         return redirect()->route('customer.index');
     }
 
