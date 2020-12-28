@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsRequest;
 use App\Models\CateDetail;
 use App\Models\Categories;
 use App\Models\Product;
@@ -26,7 +27,7 @@ class ProductsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
         $products=new Product();
         $products->fill($request->all());
@@ -56,7 +57,7 @@ class ProductsController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ProductsRequest $request, $id)
     {
         $products=Product::findOrFail($id);
         $products->fill($request->all());

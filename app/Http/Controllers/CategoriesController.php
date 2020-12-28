@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriesRequest;
 use App\Models\CateDetail;
 use App\Models\Categories;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class CategoriesController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CategoriesRequest $request)
     {
         $categories=new Categories();
         $categories->fill($request->all());
@@ -65,7 +66,7 @@ class CategoriesController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(CategoriesRequest $request, $id)
     {
         $categories=Categories::find($id);
         $categories->fill($request->all());

@@ -5,6 +5,9 @@
         <div class="card-body">
             <form action="{{route('cateDetail.update',$cateDetail->id)}}" method="post">
                 @csrf
+                @if($errors->all())
+                <div class=" alert alert-danger">Tác vụ bị lỗi</div>
+                @endif
                 <div class="form-group">
                     <label>Loại sản phẩm:</label>
                     <select class="form-control" id="detail" name="category_id">
@@ -16,7 +19,14 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Loại sản phẩm chi tiết</label>
-                    <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" id="email" value="{{$cateDetail->cateDetail_name}}">
+                    <input type="text" class="form-control
+                    @if($errors -> first('name'))
+                    border border-danger
+                    @endif"
+                    name="name" placeholder="Tên sản phẩm" id="email" value="{{$cateDetail->cateDetail_name}}">
+                    @if($errors -> first('name'))
+                    <p class="text-danger">{{ $errors -> first('name') }}</p>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

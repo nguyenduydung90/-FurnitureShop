@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CateDatailsRequest;
 use App\Models\CateDetail;
 use App\Models\Categories;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class CateDetailController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CateDatailsRequest $request)
     {
         $cateDetails=new CateDetail();
         $cateDetails->fill($request->all());
@@ -46,7 +47,7 @@ class CateDetailController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(CateDatailsRequest $request, $id)
     {
         $cateDetails=CateDetail::findOrFail($id);
         $cateDetails->fill($request->all());

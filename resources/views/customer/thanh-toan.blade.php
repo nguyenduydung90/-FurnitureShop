@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label>Số điện thoại</label>
+                                    <label>Số điện thoại người nhận hàng</label>
                                     <div class="field">
                                         <input type="text" id="" name="phone" placeholder="" value="">
                                     </div>
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label>Địa chỉ</label>
+                                    <label>Địa chỉ giao hàng</label>
                                     <div class="field">
                                         <input type="text" id="" name="address" placeholder="" value="">
                                     </div>
@@ -65,7 +65,7 @@
                                         @foreach($cart->items as $product)
                                     <div class="ui grid column">
                                         <div class="ten wide column">{{$product['item']->productName}}<div style="margin-left: 15px"></div></div>
-                                        <div class="six wide column right aligned"> {{number_format($product['price'])}} VNĐ</div>
+                                        <div class="six wide column right aligned"> {{number_format($product['price'])}}<sup>vnđ</sup></div>
                                         <div class="sixteen wide column" style="padding-top: 0; padding-bottom: 0">
                                             <div class="border-bottom-dashed"></div>
                                         </div>
@@ -73,7 +73,7 @@
                                         @endforeach
                                     <div class="ui grid column">
                                         <div class="ten wide column"><strong>Tạm tính</strong></div>
-                                        <div id="cart_calculated" data-weigh="0" data-calculated="499000" class="six wide column right aligned"><strong>{{number_format($cart->totalPrice)}} VNĐ</strong></div>
+                                        <div id="cart_calculated" data-weigh="0" data-calculated="499000" class="six wide column right aligned"><strong>{{number_format($cart->totalPrice)}}<sup>vnđ</sup></strong></div>
                                         <div class="sixteen wide column" style="padding-top: 0; padding-bottom: 0">
                                             <div class="border-bottom-solid"></div>
                                         </div>
